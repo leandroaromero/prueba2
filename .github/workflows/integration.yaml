@@ -1,4 +1,4 @@
-nane: integracion continua con node.js
+name: integracion continua con node.js
 
 on:
   push:
