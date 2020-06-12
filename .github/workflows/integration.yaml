@@ -4,6 +4,14 @@ on:
   push:
     branches: [ master]
 
+uses: voxmedia/github-action-slack-notify-build@v1
+with:
+  channel: app-alerts
+  status: STARTED
+  color: good
+env:
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
 
 jobs: 
   ci_to_master:
@@ -15,11 +23,7 @@ jobs:
           node-version: 10
       - run: npm ci
       - run: npm test
-  env:
-    SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-  uses: pullreminders/slack-action@master
-  with:
-    args: 'A new commit has been pushed.'   
+
 
 
 
