@@ -4,13 +4,8 @@ on:
   push:
     branches: [ master]
 
-uses: voxmedia/github-action-slack-notify-build@v1
-with:
-  channel: app-alerts
-  status: STARTED
-  color: good
-env:
-  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+
 
 
 jobs: 
@@ -26,5 +21,13 @@ jobs:
 
 
 
-
-
+      - name: Slack Notification
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: app-alerts
+          status: STARTED
+          color: good
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          
+        
