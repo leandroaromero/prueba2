@@ -27,9 +27,9 @@ jobs:
         uses: archive/github-actions-slack@master
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_TOKEN }}
-          slack-channel: test
+          #slack-channel: test
           slack-text: Hello! Event 
-      - name: Result from "Send Message"
+      - name: Result
         run: echo "The result was "
           
           
