@@ -15,30 +15,11 @@ jobs:
           node-version: 10
       - run: npm ci
       - run: npm test
-   
-
-     
-  # ... your test step here
-- name: Notify slack success
-  if: success()
   env:
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-  uses: voxmedia/github-action-slack-notify-build@v1
+  uses: pullreminders/slack-action@master
   with:
-    channel: app-alerts
-    status: SUCCESS
-    color: good
-
-- name: Notify slack fail
-  if: failure()
-  env:
-    SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-  uses: voxmedia/github-action-slack-notify-build@v1
-  with:
-    channel: app-alerts
-    status: FAILED
-    color: danger
-
+    args: 'A new commit has been pushed.'   
 
 
 
